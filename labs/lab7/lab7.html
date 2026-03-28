@@ -1,0 +1,302 @@
+<h1 id="лабораторная-работа-7">Лабораторная работа №7</h1>
+<h2 id="анализ-файловой-системы-linux.">Анализ файловой системы
+Linux.</h2>
+<h2 id="фио-ибрагимов-гаджимурад-шамильевич">ФИО: Ибрагимов Гаджимурад
+Шамильевич</h2>
+<h3 id="группа-нкабд-02-25">Группа: НКАбд-02-25</h3>
+<h1 id="цель-работы">Цель работы</h1>
+<p>Ознакомление с файловой системой Linux, её структурой, именами и
+содержанием каталогов. Приобретение практических навыков по применению
+команд для работы с файлами и каталогами, по управлению процессами (и
+работами), по проверке использования диска и обслуживанию файловой
+системы.</p>
+<h1 id="задание">Задание</h1>
+<h2 id="часть">1 часть</h2>
+<p>Выполните все примеры, приведённые в первой части описания
+лабораторной работы.</p>
+<hr />
+<h2 id="часть-1">2 часть</h2>
+<p>Выполните следующие действия, зафиксировав в отчёте по лабораторной
+работе используемые при этом команды и результаты их выполнения: 2.1.
+Скопируйте файл /usr/include/sys/io.h в домашний каталог и назовите его
+equipment. Если файла io.h нет, то используйте любой другой файл в
+каталоге /usr/include/sys/ вместо него. 2.2. В домашнем каталоге
+создайте директорию ~/ski.plases. 2.3. Переместите файл equipment в
+каталог ~/ski.plases. 2.4. Переименуйте файл ~/ski.plases/equipment в
+~/ski.plases/equiplist. 2.5. Создайте в домашнем каталоге файл abc1 и
+скопируйте его в каталог ~/ski.plases, назовите его equiplist2. 2.6.
+Создайте каталог с именем equipment в каталоге ~/ski.plases. 2.7.
+Переместите файлы ~/ski.plases/equiplist и equiplist2 в каталог
+~/ski.plases/equipment. 2.8. Создайте и переместите каталог ~/newdir в
+каталог ~/ski.plases и назовите его plans</p>
+<hr />
+<h2 id="часть-2">3 часть</h2>
+<p>Определите опции команды chmod, необходимые для того, чтобы присвоить
+перечисленным ниже файлам выделенные права доступа, считая, что в начале
+таких прав нет: 3.1. drwxr–r– … australia 3.2. drwx–x–x … play 3.3.
+-r-xr–r– … my_os 3.4. -rw-rw-r– … feathers При необходимости создайте
+нужные файлы.</p>
+<hr />
+<h2 id="часть-3">4 часть</h2>
+<p>Проделайте приведённые ниже упражнения, записывая в отчёт по
+лабораторной работе используемые при этом команды: 4.1. Просмотрите
+содержимое файла /etc/password. 4.2. Скопируйте файл ~/feathers в файл
+~/file.old. 4.3. Переместите файл ~/file.old в каталог ~/play. 4.4.
+Скопируйте каталог ~/play в каталог ~/fun. 4.5. Переместите каталог
+~/fun в каталог ~/play и назовите его games. 4.6. Лишите владельца файла
+~/feathers права на чтение. 4.7. Что произойдёт, если вы попытаетесь
+просмотреть файл ~/feathers командой cat? 4.8. Что произойдёт, если вы
+попытаетесь скопировать файл ~/feathers? 4.9. Дайте владельцу файла
+~/feathers право на чтение. 4.10. Лишите владельца каталога ~/play права
+на выполнение. 4.11. Перейдите в каталог ~/play. Что произошло? 4.12.
+Дайте владельцу каталога ~/play право на выполнение.</p>
+<hr />
+<h2 id="часть-4">5 часть</h2>
+<p>Прочитайте man по командам mount, fsck, mkfs, kill и кратко их
+охарактеризуйте, приведя примеры.</p>
+<h1 id="теоретическое-введение">Теоретическое введение</h1>
+<p>Основные команды Linux для работы с файлами и каталогами включают
+навигацию , создание , управление, поиск. Они позволяют эффективно
+создавать, копировать, перемещать, переименовывать и удалять объекты в
+файловой системе через терминал.</p>
+<p>Права доступа в Linux определяют, кто может читать <img
+src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" />писать
+или выполнять <img
+src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" />файлы
+и каталоги. Доступ делится на три группы: Владелец (User), Группа
+(Group) и Остальные (Others). Права управляются через символьный <img
+src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" />или
+числовой <img
+src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" />форматы
+командами <code>chmod</code> (права), <code>chown</code> (владелец),
+<code>chgrp</code> (группа).</p>
+<h1 id="выполнение-лабораторной-работы">Выполнение лабораторной
+работы</h1>
+<h2 id="часть-5">1 часть</h2>
+<h3 id="команды-для-работы-с-файлами-и-каталогами">Команды для работы с
+файлами и каталогами</h3>
+<p>Для создания текстового файла можно использовать команду touch.</p>
+<p>Формат команды:</p>
+<p><img
+src="/home/gkibragimov/snap/marktext/9/.config/marktext/images/2026-03-28-14-30-31-image.png" /></p>
+<hr />
+<p>Для просмотра файлов небольшого размера можно использовать команду
+cat. Формат команды:</p>
+<p><img
+src="/home/gkibragimov/snap/marktext/9/.config/marktext/images/2026-03-28-14-32-41-image.png" /></p>
+<hr />
+<p>Для просмотра файлов постранично удобнее использовать команду less.
+Формат команды:</p>
+<p>less <название файла></p>
+<figure>
+<img
+src="/home/gkibragimov/Pictures/Снимки%20экрана/Снимок%20экрана%20от%202026-03-28%2014-33-55.png"
+alt="Computer" />
+<figcaption aria-hidden="true">Computer</figcaption>
+</figure>
+<hr />
+<p>Команда head выводит первые n строк . а команда tail последние n
+строк файла</p>
+<p><img
+src="/home/gkibragimov/snap/marktext/9/.config/marktext/images/2026-03-28-17-18-14-image.png" /></p>
+<hr />
+<h3 id="копирование-файлов-и-каталогов">Копирование файлов и
+каталогов</h3>
+<p>Команда cp используется для копирования файлов и каталогов. Формат
+команды:</p>
+<p><img
+src="/home/gkibragimov/snap/marktext/9/.config/marktext/images/2026-03-28-14-45-24-image.png" /></p>
+<p>Копирование файла в текущем каталоге. Скопировать файл ~/abc1 в файл
+april и в файл may:</p>
+<p><img
+src="/home/gkibragimov/snap/marktext/9/.config/marktext/images/2026-03-28-14-49-14-image.png" /></p>
+<hr />
+<p>Копирование нескольких файлов в каталог. Скопировать файлы april и
+may в каталог monthly:</p>
+<p><img
+src="/home/gkibragimov/snap/marktext/9/.config/marktext/images/2026-03-28-14-52-29-image.png" /></p>
+<p>Копирование файлов в произвольном каталоге. Скопировать файл
+monthly/may в файл с именем june:</p>
+<p><img
+src="/home/gkibragimov/snap/marktext/9/.config/marktext/images/2026-03-28-14-55-03-image.png" /></p>
+<hr />
+<p>Копирование каталогов в текущем каталоге. Скопировать каталог monthly
+в каталог monthly.00</p>
+<p><img
+src="/home/gkibragimov/snap/marktext/9/.config/marktext/images/2026-03-28-15-02-58-image.png" /></p>
+<p>Копирование каталогов в произвольном каталоге. Скопировать каталог
+monthly.00 в каталог /tmp</p>
+<p><img
+src="/home/gkibragimov/snap/marktext/9/.config/marktext/images/2026-03-28-15-04-13-image.png" /></p>
+<hr />
+<h3 id="перемещение-и-переименование-файлов-и-каталогов">Перемещение и
+переименование файлов и каталогов</h3>
+<p>Команды mv и mvdir предназначены для перемещения и переименования
+файлов и каталогов. Формат команды mv:</p>
+<p>mv [-опции] старый_файл новый_файл</p>
+<p>Переименование файлов в текущем каталоге. Изменить название файла
+april на july в домашнем каталоге:</p>
+<p><img
+src="/home/gkibragimov/snap/marktext/9/.config/marktext/images/2026-03-28-15-00-18-image.png" /></p>
+<hr />
+<p>Перемещение файлов в другой каталог. Переместить файл july в каталог
+monthly.00:</p>
+<p><img
+src="/home/gkibragimov/snap/marktext/9/.config/marktext/images/2026-03-28-15-07-22-image.png" /></p>
+<p>Переименование каталогов в текущем каталоге. Переименовать каталог
+monthly.00 в monthly.01:</p>
+<p><img
+src="/home/gkibragimov/snap/marktext/9/.config/marktext/images/2026-03-28-15-08-30-image.png" /></p>
+<hr />
+<p>Перемещение каталога в другой каталог. Переместить каталог monthly.01
+в каталог reports:</p>
+<p><img
+src="/home/gkibragimov/snap/marktext/9/.config/marktext/images/2026-03-28-15-09-44-image.png" /></p>
+<p>Переименование каталога, не являющегося текущим. Переименовать
+каталог reports/monthly.01 в reports/monthly:</p>
+<p><img
+src="/home/gkibragimov/snap/marktext/9/.config/marktext/images/2026-03-28-15-11-27-image.png" /></p>
+<hr />
+<h3 id="изменение-прав-доступа">Изменение прав доступа</h3>
+<p>Права доступа к файлу или каталогу можно изменить, воспользовавшись
+командой chmod. Сделать это может владелец файла (или каталога) или
+пользователь с правами администратора. Формат команды:</p>
+<p>chmod режим имя_файла</p>
+<p>Требуется создать файл ~/may с правом выполнения для владельца</p>
+<p><img
+src="/home/gkibragimov/snap/marktext/9/.config/marktext/images/2026-03-28-15-24-45-image.png" /></p>
+<hr />
+<p>Требуется лишить владельца файла ~/may права на выполнение:</p>
+<p><img
+src="/home/gkibragimov/snap/marktext/9/.config/marktext/images/2026-03-28-15-26-09-image.png" /></p>
+<hr />
+<p>Требуется создать каталог monthly с запретом на чтение для членов
+группы и всех остальных пользователей:</p>
+<p><img
+src="/home/gkibragimov/snap/marktext/9/.config/marktext/images/2026-03-28-15-31-50-image.png" /></p>
+<p>Требуется создать файл ~/abc1 с правом записи для членов группы:</p>
+<p><img
+src="/home/gkibragimov/snap/marktext/9/.config/marktext/images/2026-03-28-15-33-17-image.png" /></p>
+<hr />
+<h3 id="анализ-файловой-системы">Анализ файловой системы</h3>
+<p><img
+src="/home/gkibragimov/snap/marktext/9/.config/marktext/images/2026-03-28-15-36-14-image.png" /></p>
+<hr />
+<h2 id="часть-6">2 часть</h2>
+<p>Скопируйте файл /usr/include/sys/io.h в домашний каталог и назовите
+его equipment. Если файла io.h нет, то используйте любой другой файл в
+каталоге /usr/include/sys/ вместо него.</p>
+<p><img
+src="/home/gkibragimov/snap/marktext/9/.config/marktext/images/2026-03-28-15-42-13-image.png" /></p>
+<hr />
+<p>В домашнем каталоге создайте директорию ~/ski.places</p>
+<p><img
+src="/home/gkibragimov/snap/marktext/9/.config/marktext/images/2026-03-28-15-47-57-image.png" /></p>
+<p>Переместите файл equipment в каталог ~/ski.places.</p>
+<p><img
+src="/home/gkibragimov/snap/marktext/9/.config/marktext/images/2026-03-28-15-44-24-image.png" /></p>
+<hr />
+<p>Переименуйте файл ~/ski.places/equipment в
+~/ski.places/equiplist.</p>
+<p><img
+src="/home/gkibragimov/snap/marktext/9/.config/marktext/images/2026-03-28-15-47-05-image.png" /></p>
+<hr />
+<p>Создайте в домашнем каталоге файл abc1 и скопируйте его в каталог
+~/ski.places, назовите его equiplist2</p>
+<p><img
+src="/home/gkibragimov/snap/marktext/9/.config/marktext/images/2026-03-28-15-50-05-image.png" /></p>
+<p>Создайте каталог с именем equipment в каталоге ~/ski.places.</p>
+<p><img
+src="/home/gkibragimov/snap/marktext/9/.config/marktext/images/2026-03-28-15-51-31-image.png" /></p>
+<hr />
+<p>Переместите файлы ~/ski.plases/equiplist и equiplist2 в каталог
+~/ski.plases/equipment.</p>
+<p><img
+src="/home/gkibragimov/snap/marktext/9/.config/marktext/images/2026-03-28-15-53-22-image.png" /></p>
+<p>Создайте и переместите каталог ~/newdir в каталог ~/ski.plases и
+назовите его plans.</p>
+<p><img
+src="/home/gkibragimov/snap/marktext/9/.config/marktext/images/2026-03-28-15-55-06-image.png" /></p>
+<hr />
+<h2 id="часть-7">3 часть</h2>
+<p>Определите опции команды chmod, необходимые для того, чтобы присвоить
+перечис- ленным ниже файлам выделенные права доступа, считая, что в
+начале таких прав нет: 3.1. drwxr–r– … australia 3.2. drwx–x–x … play
+3.3. -r-xr–r– … my_os 3.4. -rw-rw-r– … feathers При необходимости
+создайте нужные файлы.</p>
+<p>Создаем нужные файлы в специальном каталоге:</p>
+<p><img
+src="/home/gkibragimov/snap/marktext/9/.config/marktext/images/2026-03-28-16-24-54-image.png" /></p>
+<p>Изначальные права доступа</p>
+<p><img
+src="/home/gkibragimov/snap/marktext/9/.config/marktext/images/2026-03-28-16-26-02-image.png" /></p>
+<hr />
+<p>Изменяем права доступа</p>
+<p><img
+src="/home/gkibragimov/snap/marktext/9/.config/marktext/images/2026-03-28-16-31-11-image.png" /></p>
+<hr />
+<h2 id="часть-8">4 часть</h2>
+<p>Просмотрите содержимое файла /etc/password.</p>
+<p><img
+src="/home/gkibragimov/snap/marktext/9/.config/marktext/images/2026-03-28-16-40-53-image.png" /></p>
+<p>Скопируйте файл ~/feathers в файл ~/file.old.</p>
+<p><img
+src="/home/gkibragimov/snap/marktext/9/.config/marktext/images/2026-03-28-16-42-58-image.png" /></p>
+<hr />
+<p>Переместите файл ~/file.old в каталог ~/play.</p>
+<p><img
+src="/home/gkibragimov/snap/marktext/9/.config/marktext/images/2026-03-28-16-49-03-image.png" /></p>
+<p>Скопируйте каталог ~/play в каталог ~/fun.</p>
+<p><img
+src="/home/gkibragimov/snap/marktext/9/.config/marktext/images/2026-03-28-16-50-21-image.png" /></p>
+<hr />
+<p>Переместите каталог ~/fun в каталог ~/play и назовите его games</p>
+<p><img
+src="/home/gkibragimov/snap/marktext/9/.config/marktext/images/2026-03-28-16-51-54-image.png" /></p>
+<p>Лишите владельца файла ~/feathers права на чтение.</p>
+<p><img
+src="/home/gkibragimov/snap/marktext/9/.config/marktext/images/2026-03-28-16-53-31-image.png" /></p>
+<hr />
+<p>Что произойдёт, если вы попытаетесь просмотреть файл ~/feathers
+командой cat?</p>
+<p><img
+src="/home/gkibragimov/snap/marktext/9/.config/marktext/images/2026-03-28-16-54-03-image.png" /></p>
+<p>Что произойдёт, если вы попытаетесь скопировать файл ~/feathers?</p>
+<p><img
+src="/home/gkibragimov/snap/marktext/9/.config/marktext/images/2026-03-28-16-55-19-image.png" /></p>
+<hr />
+<p>Дайте владельцу файла ~/feathers право на чтение</p>
+<p><img
+src="/home/gkibragimov/snap/marktext/9/.config/marktext/images/2026-03-28-16-56-28-image.png" /></p>
+<hr />
+<p>Лишите владельца каталога ~/Play права на выполнение.</p>
+<p><img
+src="/home/gkibragimov/snap/marktext/9/.config/marktext/images/2026-03-28-16-57-29-image.png" /></p>
+<p>Перейдите в каталог ~/play. Что произошло?</p>
+<p><img
+src="/home/gkibragimov/snap/marktext/9/.config/marktext/images/2026-03-28-16-58-08-image.png" /></p>
+<hr />
+<p>Дайте владельцу каталога ~/Play право на выполнение.</p>
+<p><img
+src="/home/gkibragimov/snap/marktext/9/.config/marktext/images/2026-03-28-16-59-29-image.png" /></p>
+<hr />
+<h2 id="часть-9">5 часть</h2>
+<p>Прочитайте man по командам mount, fsck, mkfs, kill и кратко их
+охарактеризуйте, приведя примеры</p>
+<p>man mount</p>
+<p><img
+src="/home/gkibragimov/snap/marktext/9/.config/marktext/images/2026-03-28-17-01-35-image.png" /></p>
+<hr />
+<p>man fsck</p>
+<p><img
+src="/home/gkibragimov/snap/marktext/9/.config/marktext/images/2026-03-28-17-02-30-image.png" /></p>
+<p>man mkfs</p>
+<p><img
+src="/home/gkibragimov/snap/marktext/9/.config/marktext/images/2026-03-28-17-03-09-image.png" /></p>
+<hr />
+<p>man kill</p>
+<p><img
+src="/home/gkibragimov/snap/marktext/9/.config/marktext/images/2026-03-28-17-03-44-image.png" /></p>
+<h1 id="выводы">Выводы</h1>
+<p>В ходе выполнения лабораторной работы были закреплены практические
+навыки работы с файловой системой и правами доступа</p>
