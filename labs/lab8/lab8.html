@@ -1,0 +1,301 @@
+\begin{frame}{Лабораторная работа №8}
+\protect\phantomsection\label{ux43bux430ux431ux43eux440ux430ux442ux43eux440ux43dux430ux44f-ux440ux430ux431ux43eux442ux430-8}
+\begin{block}{Поиск файлов. Перенаправление ввода-вывода. Просмотр
+запущенных процессов}
+\protect\phantomsection\label{ux43fux43eux438ux441ux43a-ux444ux430ux439ux43bux43eux432.-ux43fux435ux440ux435ux43dux430ux43fux440ux430ux432ux43bux435ux43dux438ux435-ux432ux432ux43eux434ux430-ux432ux44bux432ux43eux434ux430.-ux43fux440ux43eux441ux43cux43eux442ux440-ux437ux430ux43fux443ux449ux435ux43dux43dux44bux445-ux43fux440ux43eux446ux435ux441ux441ux43eux432}
+\end{block}
+
+\begin{block}{ФИО: Ибрагимов Гаджимурад Шамильевич}
+\protect\phantomsection\label{ux444ux438ux43e-ux438ux431ux440ux430ux433ux438ux43cux43eux432-ux433ux430ux434ux436ux438ux43cux443ux440ux430ux434-ux448ux430ux43cux438ux43bux44cux435ux432ux438ux447}
+\begin{block}{Группа: НКАбд-02-25}
+\protect\phantomsection\label{ux433ux440ux443ux43fux43fux430-ux43dux43aux430ux431ux434-02-25}
+\end{block}
+\end{block}
+\end{frame}
+
+\begin{frame}{Цель работы}
+\protect\phantomsection\label{ux446ux435ux43bux44c-ux440ux430ux431ux43eux442ux44b}
+Ознакомление с инструментами поиска файлов и фильтрации текстовых
+данных. Приобретение практических навыков: по управлению процессами (и
+заданиями), по проверке использования диска и обслуживанию файловых
+систем.
+\end{frame}
+
+\begin{frame}{Задание}
+\protect\phantomsection\label{ux437ux430ux434ux430ux43dux438ux435}
+\begin{enumerate}
+\tightlist
+\item
+  Осуществите вход в систему, используя соответствующее имя
+  пользователя.
+\item
+  Запишите в файл file.txt названия файлов, содержащихся в каталоге
+  /etc. Допи- шите в этот же файл названия файлов, содержащихся в вашем
+  домашнем каталоге.
+\item
+  Выведите имена всех файлов из file.txt, имеющих расширение .conf,
+  после чего запишите их в новый текстовой файл conf.txt
+\item
+  Определите, какие файлы в вашем домашнем каталоге имеют имена,
+  начинавшиеся с символа c? Предложите несколько вариантов, как это
+  сделать.
+\item
+  Выведите на экран (по странично) имена файлов из каталога /etc,
+  начинающиеся с символа h.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\begin{enumerate}
+\setcounter{enumi}{5}
+\item
+  Запустите в фоновом режиме процесс, который будет записывать в файл
+  \textasciitilde/logfile файлы, имена которых начинаются с log.
+\item
+  Удалите файл \textasciitilde/logfile.
+\item
+  Запустите из консоли в фоновом режиме редактор gedit.
+\item
+  Определите идентификатор процесса gedit, используя команду ps,
+  конвейер и фильтр grep. Как ещё можно определить идентификатор
+  процесса?
+\item
+  Прочтите справку (man) команды kill, после чего используйте её для
+  завершения процесса gedit.
+\item
+  Выполните команды df и du, предварительно получив более подробную
+  информацию об этих командах, с помощью команды man.
+\item
+  Воспользовавшись справкой команды find, выведите имена всех
+  директорий, имеющихся в вашем домашнем каталоге.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Теоретическое введение}
+\protect\phantomsection\label{ux442ux435ux43eux440ux435ux442ux438ux447ux435ux441ux43aux43eux435-ux432ux432ux435ux434ux435ux43dux438ux435}
+В системе по умолчанию открыто три специальных потока: -- stdin ---
+стандартный поток ввода (по умолчанию: клавиатура), файловый дескриптор
+0; -- stdout --- стандартный поток вывода (по умолчанию: консоль),
+файловый дескриптор 1; -- stderr --- стандартный поток вывод сообщений
+об ошибках (по умолчанию: консоль), файловый дескриптор 2. Большинство
+используемых в консоли команд и программ записывают результаты своей
+работы в стандартный поток вывода stdout. Например, команда ls выводит в
+стан- дартный поток вывода (консоль) список файлов в текущей директории.
+Потоки вывода и ввода можно перенаправлять на другие файлы или
+устройства. Проще всего это делается с помощью символов \textgreater,
+\textgreater\textgreater, \textless, \textless\textless.
+\end{frame}
+
+\begin{frame}
+Конвейер (pipe) служит для объединения простых команд или утилит в
+цепочки, в ко- торых результат работы предыдущей команды передаётся
+последующей.
+
+Команда find используется для поиска и отображения на экран имён файлов,
+соответ- ствующих заданной строке символов.
+
+Найти в текстовом файле указанную строку символов позволяет команда
+grep.
+
+Команда df показывает размер каждого смонтированного раздела диска.
+\end{frame}
+
+\begin{frame}
+Любую выполняющуюся в консоли команду или внешнюю программу можно
+запустить в фоновом режиме. Для этого следует в конце имени команды
+указать знак амперсанда \&.
+
+Любой команде, выполняемой в системе, присваивается идентификатор
+процесса (process ID). Получить информацию о процессе и управлять им,
+пользуясь идентифи- катором процесса, можно из любого окна командного
+интерпретатора.
+
+С помощью команды kill можно прекратить процесс
+\end{frame}
+
+\begin{frame}{Выполнение лабораторной работы}
+\protect\phantomsection\label{ux432ux44bux43fux43eux43bux43dux435ux43dux438ux435-ux43bux430ux431ux43eux440ux430ux442ux43eux440ux43dux43eux439-ux440ux430ux431ux43eux442ux44b}
+\begin{block}{1. Осуществите вход в систему под своей учетной записью
+Linux}
+\protect\phantomsection\label{ux43eux441ux443ux449ux435ux441ux442ux432ux438ux442ux435-ux432ux445ux43eux434-ux432-ux441ux438ux441ux442ux435ux43cux443-ux43fux43eux434-ux441ux432ux43eux435ux439-ux443ux447ux435ux442ux43dux43eux439-ux437ux430ux43fux438ux441ux44cux44e-linux}
+\pandocbounded{\includegraphics[keepaspectratio]{/home/gkibragimov/snap/marktext/9/.config/marktext/images/2026-04-04-16-05-56-image.png}}
+\end{block}
+\end{frame}
+
+\begin{frame}
+\begin{block}{2. Запишите в файл file.txt названия файлов , содержащихся
+в каталоге /etc. Допишите в этот же файл название файлов, содержащихся в
+домашнем каталоге.}
+\protect\phantomsection\label{ux437ux430ux43fux438ux448ux438ux442ux435-ux432-ux444ux430ux439ux43b-file.txt-ux43dux430ux437ux432ux430ux43dux438ux44f-ux444ux430ux439ux43bux43eux432-ux441ux43eux434ux435ux440ux436ux430ux449ux438ux445ux441ux44f-ux432-ux43aux430ux442ux430ux43bux43eux433ux435-etc.-ux434ux43eux43fux438ux448ux438ux442ux435-ux432-ux44dux442ux43eux442-ux436ux435-ux444ux430ux439ux43b-ux43dux430ux437ux432ux430ux43dux438ux435-ux444ux430ux439ux43bux43eux432-ux441ux43eux434ux435ux440ux436ux430ux449ux438ux445ux441ux44f-ux432-ux434ux43eux43cux430ux448ux43dux435ux43c-ux43aux430ux442ux430ux43bux43eux433ux435.}
+Создаем файл и записываем название файлов из /etc
+
+\pandocbounded{\includegraphics[keepaspectratio]{/home/gkibragimov/snap/marktext/9/.config/marktext/images/2026-04-04-16-09-47-image.png}}
+\end{block}
+\end{frame}
+
+\begin{frame}
+Просмотр содержимого нового файла
+\end{frame}
+
+\begin{frame}
+\pandocbounded{\includegraphics[keepaspectratio]{/home/gkibragimov/snap/marktext/9/.config/marktext/images/2026-04-04-17-25-42-Снимок экрана от 2026-04-04 16-10-05.png}}
+\end{frame}
+
+\begin{frame}
+ls \textasciitilde{} \textgreater\textgreater{} file.txt
+
+добавляем название файлов из \textasciitilde{}
+\end{frame}
+
+\begin{frame}
+\pandocbounded{\includegraphics[keepaspectratio]{/home/gkibragimov/snap/marktext/9/.config/marktext/images/2026-04-04-17-26-27-Снимок экрана от 2026-04-04 16-12-37.png}}
+\end{frame}
+
+\begin{frame}
+\begin{block}{3. Выведите имена всех файлов из file.txt, имеющих
+расширение .conf , после чего запишите их в новый тестовый файл
+conf.txt}
+\protect\phantomsection\label{ux432ux44bux432ux435ux434ux438ux442ux435-ux438ux43cux435ux43dux430-ux432ux441ux435ux445-ux444ux430ux439ux43bux43eux432-ux438ux437-file.txt-ux438ux43cux435ux44eux449ux438ux445-ux440ux430ux441ux448ux438ux440ux435ux43dux438ux435-.conf-ux43fux43eux441ux43bux435-ux447ux435ux433ux43e-ux437ux430ux43fux438ux448ux438ux442ux435-ux438ux445-ux432-ux43dux43eux432ux44bux439-ux442ux435ux441ux442ux43eux432ux44bux439-ux444ux430ux439ux43b-conf.txt}
+\end{block}
+\end{frame}
+
+\begin{frame}
+\pandocbounded{\includegraphics[keepaspectratio]{/home/gkibragimov/snap/marktext/9/.config/marktext/images/2026-04-04-17-29-12-Снимок экрана от 2026-04-04 16-17-34.png}}
+\end{frame}
+
+\begin{frame}
+Переносим данные в conf.txt
+\end{frame}
+
+\begin{frame}
+\pandocbounded{\includegraphics[keepaspectratio]{/home/gkibragimov/snap/marktext/9/.config/marktext/images/2026-04-04-17-32-37-Снимок экрана от 2026-04-04 16-18-44.png}}
+\end{frame}
+
+\begin{frame}
+\begin{block}{4. Определите, какие файлы в вашем домашнем каталоге имеют
+имена. начинавшиеся с символа `'c'\,'. Предложите несколько вариантов
+как это сделать}
+\protect\phantomsection\label{ux43eux43fux440ux435ux434ux435ux43bux438ux442ux435-ux43aux430ux43aux438ux435-ux444ux430ux439ux43bux44b-ux432-ux432ux430ux448ux435ux43c-ux434ux43eux43cux430ux448ux43dux435ux43c-ux43aux430ux442ux430ux43bux43eux433ux435-ux438ux43cux435ux44eux442-ux438ux43cux435ux43dux430.-ux43dux430ux447ux438ux43dux430ux432ux448ux438ux435ux441ux44f-ux441-ux441ux438ux43cux432ux43eux43bux430-c.-ux43fux440ux435ux434ux43bux43eux436ux438ux442ux435-ux43dux435ux441ux43aux43eux43bux44cux43aux43e-ux432ux430ux440ux438ux430ux43dux442ux43eux432-ux43aux430ux43a-ux44dux442ux43e-ux441ux434ux435ux43bux430ux442ux44c}
+1-ый вариант через find
+
+\pandocbounded{\includegraphics[keepaspectratio]{/home/gkibragimov/snap/marktext/9/.config/marktext/images/2026-04-04-16-21-50-image.png}}
+\end{block}
+\end{frame}
+
+\begin{frame}
+2-ый вариант
+
+\pandocbounded{\includegraphics[keepaspectratio]{/home/gkibragimov/snap/marktext/9/.config/marktext/images/2026-04-04-16-25-36-image.png}}
+\end{frame}
+
+\begin{frame}
+\begin{block}{5. Выведите на экран имена файлов из каталога /etc ,
+начинающихся с символа ``h''}
+\protect\phantomsection\label{ux432ux44bux432ux435ux434ux438ux442ux435-ux43dux430-ux44dux43aux440ux430ux43d-ux438ux43cux435ux43dux430-ux444ux430ux439ux43bux43eux432-ux438ux437-ux43aux430ux442ux430ux43bux43eux433ux430-etc-ux43dux430ux447ux438ux43dux430ux44eux449ux438ux445ux441ux44f-ux441-ux441ux438ux43cux432ux43eux43bux430-h}
+ls /etc \textbar{} grep \^{}h \textbar{} less
+
+\pandocbounded{\includegraphics[keepaspectratio]{/home/gkibragimov/snap/marktext/9/.config/marktext/images/2026-04-04-16-29-46-image.png}}
+\end{block}
+\end{frame}
+
+\begin{frame}
+\begin{block}{6. Запустите в фоновом режиме процесс, который будет
+записывать в файл logfile имена файлов , которые начинаются с log.}
+\protect\phantomsection\label{ux437ux430ux43fux443ux441ux442ux438ux442ux435-ux432-ux444ux43eux43dux43eux432ux43eux43c-ux440ux435ux436ux438ux43cux435-ux43fux440ux43eux446ux435ux441ux441-ux43aux43eux442ux43eux440ux44bux439-ux431ux443ux434ux435ux442-ux437ux430ux43fux438ux441ux44bux432ux430ux442ux44c-ux432-ux444ux430ux439ux43b-logfile-ux438ux43cux435ux43dux430-ux444ux430ux439ux43bux43eux432-ux43aux43eux442ux43eux440ux44bux435-ux43dux430ux447ux438ux43dux430ux44eux442ux441ux44f-ux441-log.}
+Используем команду find / -name ``log*'' \textgreater\textgreater{}
+logfile \&
+\end{block}
+\end{frame}
+
+\begin{frame}
+результат:
+
+\pandocbounded{\includegraphics[keepaspectratio]{/home/gkibragimov/snap/marktext/9/.config/marktext/images/2026-04-04-17-30-05-Снимок экрана от 2026-04-04 16-35-03.png}}
+\end{frame}
+
+\begin{frame}
+\begin{block}{7. Удалите \textasciitilde/logfile}
+\protect\phantomsection\label{ux443ux434ux430ux43bux438ux442ux435-logfile}
+с помощью команды rm logfile
+
+\pandocbounded{\includegraphics[keepaspectratio]{/home/gkibragimov/snap/marktext/9/.config/marktext/images/2026-04-04-16-36-31-image.png}}
+\end{block}
+\end{frame}
+
+\begin{frame}
+\begin{block}{8. Запустите из консоли в фоном решиме редактор gedit}
+\protect\phantomsection\label{ux437ux430ux43fux443ux441ux442ux438ux442ux435-ux438ux437-ux43aux43eux43dux441ux43eux43bux438-ux432-ux444ux43eux43dux43eux43c-ux440ux435ux448ux438ux43cux435-ux440ux435ux434ux430ux43aux442ux43eux440-gedit}
+\pandocbounded{\includegraphics[keepaspectratio]{/home/gkibragimov/snap/marktext/9/.config/marktext/images/2026-04-04-16-41-27-image.png}}
+\end{block}
+\end{frame}
+
+\begin{frame}
+\begin{block}{9. Определите идентификатор процесса gedit используя
+команду ps, конвейер и фильтр grep. Как еще можно определить
+идентификатор процесса}
+\protect\phantomsection\label{ux43eux43fux440ux435ux434ux435ux43bux438ux442ux435-ux438ux434ux435ux43dux442ux438ux444ux438ux43aux430ux442ux43eux440-ux43fux440ux43eux446ux435ux441ux441ux430-gedit-ux438ux441ux43fux43eux43bux44cux437ux443ux44f-ux43aux43eux43cux430ux43dux434ux443-ps-ux43aux43eux43dux432ux435ux439ux435ux440-ux438-ux444ux438ux43bux44cux442ux440-grep.-ux43aux430ux43a-ux435ux449ux435-ux43cux43eux436ux43dux43e-ux43eux43fux440ux435ux434ux435ux43bux438ux442ux44c-ux438ux434ux435ux43dux442ux438ux444ux438ux43aux430ux442ux43eux440-ux43fux440ux43eux446ux435ux441ux441ux430}
+\pandocbounded{\includegraphics[keepaspectratio]{/home/gkibragimov/snap/marktext/9/.config/marktext/images/2026-04-04-16-44-41-image.png}}
+
+Альтернатива:
+
+\pandocbounded{\includegraphics[keepaspectratio]{/home/gkibragimov/snap/marktext/9/.config/marktext/images/2026-04-04-16-46-32-image.png}}
+\end{block}
+\end{frame}
+
+\begin{frame}
+\begin{block}{10. Прочтите справку команды (man) команды kill , после
+чего используйте её для завершения процесса gedit}
+\protect\phantomsection\label{ux43fux440ux43eux447ux442ux438ux442ux435-ux441ux43fux440ux430ux432ux43aux443-ux43aux43eux43cux430ux43dux434ux44b-man-ux43aux43eux43cux430ux43dux434ux44b-kill-ux43fux43eux441ux43bux435-ux447ux435ux433ux43e-ux438ux441ux43fux43eux43bux44cux437ux443ux439ux442ux435-ux435ux451-ux434ux43bux44f-ux437ux430ux432ux435ux440ux448ux435ux43dux438ux44f-ux43fux440ux43eux446ux435ux441ux441ux430-gedit}
+\pandocbounded{\includegraphics[keepaspectratio]{/home/gkibragimov/snap/marktext/9/.config/marktext/images/2026-04-04-16-48-32-image.png}}
+
+Уничтожаем процесс
+
+\pandocbounded{\includegraphics[keepaspectratio]{/home/gkibragimov/snap/marktext/9/.config/marktext/images/2026-04-04-16-49-22-image.png}}
+\end{block}
+\end{frame}
+
+\begin{frame}
+\begin{block}{Выполните команды df и du, предварительно получив более
+подробную информацию об этих командах, с помощью команды man}
+\protect\phantomsection\label{ux432ux44bux43fux43eux43bux43dux438ux442ux435-ux43aux43eux43cux430ux43dux434ux44b-df-ux438-du-ux43fux440ux435ux434ux432ux430ux440ux438ux442ux435ux43bux44cux43dux43e-ux43fux43eux43bux443ux447ux438ux432-ux431ux43eux43bux435ux435-ux43fux43eux434ux440ux43eux431ux43dux443ux44e-ux438ux43dux444ux43eux440ux43cux430ux446ux438ux44e-ux43eux431-ux44dux442ux438ux445-ux43aux43eux43cux430ux43dux434ux430ux445-ux441-ux43fux43eux43cux43eux449ux44cux44e-ux43aux43eux43cux430ux43dux434ux44b-man}
+df
+
+\pandocbounded{\includegraphics[keepaspectratio]{/home/gkibragimov/snap/marktext/9/.config/marktext/images/2026-04-04-16-51-43-image.png}}
+\end{block}
+\end{frame}
+
+\begin{frame}
+Используем команду df -h
+
+\pandocbounded{\includegraphics[keepaspectratio]{/home/gkibragimov/snap/marktext/9/.config/marktext/images/2026-04-04-16-52-03-image.png}}
+\end{frame}
+
+\begin{frame}
+du
+
+\pandocbounded{\includegraphics[keepaspectratio]{/home/gkibragimov/snap/marktext/9/.config/marktext/images/2026-04-04-16-53-06-image.png}}
+\end{frame}
+
+\begin{frame}
+Используем команду du -c
+
+\pandocbounded{\includegraphics[keepaspectratio]{/home/gkibragimov/snap/marktext/9/.config/marktext/images/2026-04-04-16-54-12-image.png}}
+\end{frame}
+
+\begin{frame}
+\begin{block}{12. Используйте справку команды find , выведите имена всех
+директорий, имеющихся в вашем домашнем каталоге}
+\protect\phantomsection\label{ux438ux441ux43fux43eux43bux44cux437ux443ux439ux442ux435-ux441ux43fux440ux430ux432ux43aux443-ux43aux43eux43cux430ux43dux434ux44b-find-ux432ux44bux432ux435ux434ux438ux442ux435-ux438ux43cux435ux43dux430-ux432ux441ux435ux445-ux434ux438ux440ux435ux43aux442ux43eux440ux438ux439-ux438ux43cux435ux44eux449ux438ux445ux441ux44f-ux432-ux432ux430ux448ux435ux43c-ux434ux43eux43cux430ux448ux43dux435ux43c-ux43aux430ux442ux430ux43bux43eux433ux435}
+\pandocbounded{\includegraphics[keepaspectratio]{/home/gkibragimov/snap/marktext/9/.config/marktext/images/2026-04-04-17-00-05-image.png}}
+\end{block}
+\end{frame}
+
+\begin{frame}
+\pandocbounded{\includegraphics[keepaspectratio]{/home/gkibragimov/snap/marktext/9/.config/marktext/images/2026-04-04-17-33-08-Снимок экрана от 2026-04-04 17-00-20.png}}
+\end{frame}
+
+\begin{frame}{Выводы}
+\protect\phantomsection\label{ux432ux44bux432ux43eux434ux44b}
+В ходе выполнения мною были освоены базовые операции работы с файловой
+системой и процессами Linux
+\end{frame}
