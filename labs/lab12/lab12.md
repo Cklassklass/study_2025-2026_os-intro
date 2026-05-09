@@ -93,28 +93,12 @@
 
 ![](/home/gkibragimov/snap/marktext/9/.config/marktext/images/2026-05-02-12-36-51-image.png)
 
-
-
 ---
 
 Результат программы:
 
 ![](/home/gkibragimov/snap/marktext/9/.config/marktext/images/2026-05-02-12-37-18-image.png)
 
-
-
 # Выводы
 
 В ходе выполнения данной лабораторной работы я научился программировать в оболочке OC Linux. Освоил базовые инуструменты написания скриптов. 
-
-
-
-
-
-
-
-
-
-
-
-
